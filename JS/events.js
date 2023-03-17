@@ -1,6 +1,6 @@
-export const events = [  
+const events = [  
     {
-      _id: 1,
+      "id": "1",
       "image":"https://i.postimg.cc/Fs03hQDt/Collectivities-Party.jpg",
       "name":"Collectivities Party",
       "date":"2021-12-12",
@@ -12,7 +12,7 @@ export const events = [
       "price":5
     },
     {
-      _id: 2,
+      "id": "2",
       "image":"https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg",
       "name":"Korean style",
       "date":"2022-08-12",
@@ -24,7 +24,7 @@ export const events = [
       "price":10
     },
     {
-      _id: 3,
+      "id": "3",
       "image":"https://i.postimg.cc/GmHRkbNV/Jurassic-Park.jpg",
       "name":"Jurassic Park",
       "date":"2021-11-02",
@@ -36,7 +36,7 @@ export const events = [
       "price":15
     },
     {
-      _id: 4,
+      "id": "4",
       "image":"https://i.postimg.cc/c4C2zXm8/Parisian-Museum.jpg",
       "name":"Parisian Museum",
       "date":"2022-11-02",
@@ -48,7 +48,7 @@ export const events = [
       "price":3500
     },
     {
-      _id: 5,
+      "id": "5",
       "image":"https://i.postimg.cc/KYD0jMf2/comicon.jpg",
       "name":"Comicon",
       "date":"2021-02-12",
@@ -60,7 +60,7 @@ export const events = [
       "price":54
     },
     {
-      _id: 6,
+      "id": "6",
       "image":"https://i.postimg.cc/RZ9fH4Pr/halloween.jpg",
       "name":"Halloween Night",
       "date":"2022-02-12",
@@ -72,7 +72,7 @@ export const events = [
       "price":12
     },
     {
-      _id: 7,
+      "id": "7",
       "image":"https://i.postimg.cc/PrMJ0ZMc/Metallica-in-concert.jpg",
       "name":"Metallica in concert",
       "date":"2022-01-22",
@@ -84,7 +84,7 @@ export const events = [
       "price":150
     },
     {
-      _id: 8,
+      "id": "8",
       "image":"https://i.postimg.cc/KvsSK8cj/Electronic-Fest.jpg",
       "name":"Electronic Fest",
       "date":"2021-01-22",
@@ -96,7 +96,7 @@ export const events = [
       "price":250
       },
     {
-      _id: 9,
+      "id": "9",
       "image":"https://i.postimg.cc/fyLqZY9K/10-K-for-life.jpg",
       "name":"10K for life",
       "date":"2021-03-01",
@@ -108,7 +108,7 @@ export const events = [
       "price":3
     },
     {
-      _id: 10,
+      "id": "10",
       "image":"https://i.postimg.cc/zv67r65z/15kny.jpg",
       "name":"15K NY",
       "date":"2022-03-01",
@@ -120,7 +120,7 @@ export const events = [
       "price":3
       },
     {
-      _id: 11,
+      "id": "11",
       "image":"https://i.postimg.cc/Sst763n6/book1.jpg",
       "name":"School's book fair",
       "date":"2022-10-15",
@@ -132,7 +132,7 @@ export const events = [
       "price":1
     },
     {
-      _id: 12,
+      "id": "12",
       "image":"https://i.postimg.cc/05FhxHVK/book4.jpg",
       "name":"Just for your kitchen",
       "date":"2021-11-09",
@@ -144,7 +144,7 @@ export const events = [
       "price":100
     },
     {
-      _id: 13,
+      "id": "13",
       "image":"https://i.postimg.cc/vH52y81C/cinema4.jpg",
       "name":"Batman",
       "date":"2021-03-11",
@@ -156,7 +156,7 @@ export const events = [
       "price":225
     },
     {
-      _id: 14,
+      "id": "14",
       "image":"https://i.postimg.cc/T3C92KTN/scale.jpg",
       "name":"Avengers",
       "date":"2022-10-15",
@@ -168,4 +168,8 @@ export const events = [
       "price":250
     }
     
-  ];
+];
+
+const eventsUpcoming = events.filter(event => new Date(event.date).getFullYear() > 2021)
+
+const eventsPast = events.filter(event => new Date(event.date).getFullYear() <= 2021)
