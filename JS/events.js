@@ -1,175 +1,152 @@
-const events = [  
-    {
-      "id": "1",
-      "image":"https://i.postimg.cc/Fs03hQDt/Collectivities-Party.jpg",
-      "name":"Collectivities Party",
-      "date":"2021-12-12",
-      "description":"Enjoy your favourite dishes, from different countries, in a unique event for the whole family.",
-      "category":"Food Fair",
-      "place":"Room A",
-      "capacity":45000,
-      "assistance":42756,
-      "price":5
-    },
-    {
-      "id": "2",
-      "image":"https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg",
-      "name":"Korean style",
-      "date":"2022-08-12",
-      "description":"Enjoy the best Korean dishes, with international chefs and awesome events.",
-      "category":"Food Fair",
-      "place":"Room A",
-      "capacity":45000,
-      "assistance":42756,
-      "price":10
-    },
-    {
-      "id": "3",
-      "image":"https://i.postimg.cc/GmHRkbNV/Jurassic-Park.jpg",
-      "name":"Jurassic Park",
-      "date":"2021-11-02",
-      "description":"Let's go meet the biggest dinosaurs in the paleontology museum.",
-      "category":"Museum",
-      "place":"Field",
-      "capacity":82000,
-      "assistance":65892,
-      "price":15
-    },
-    {
-      "id": "4",
-      "image":"https://i.postimg.cc/c4C2zXm8/Parisian-Museum.jpg",
-      "name":"Parisian Museum",
-      "date":"2022-11-02",
-      "description":"A unique tour in the city of lights, get to know one of the most iconic places.",
-      "category":"Museum",
-      "place":"Paris",
-      "capacity":8200,
-      "estimate":8200,
-      "price":3500
-    },
-    {
-      "id": "5",
-      "image":"https://i.postimg.cc/KYD0jMf2/comicon.jpg",
-      "name":"Comicon",
-      "date":"2021-02-12",
-      "description":"For comic lovers, all your favourite characters gathered in one place.",
-      "category":"Costume Party",
-      "place":"Room C",
-      "capacity":120000,
-      "assistance":110000,
-      "price":54
-    },
-    {
-      "id": "6",
-      "image":"https://i.postimg.cc/RZ9fH4Pr/halloween.jpg",
-      "name":"Halloween Night",
-      "date":"2022-02-12",
-      "description":"Come with your scariest costume and win incredible prizes.",
-      "category":"Costume Party",
-      "place":"Room C",
-      "capacity":12000,
-      "estimate":9000,
-      "price":12
-    },
-    {
-      "id": "7",
-      "image":"https://i.postimg.cc/PrMJ0ZMc/Metallica-in-concert.jpg",
-      "name":"Metallica in concert",
-      "date":"2022-01-22",
-      "description":"The only concert of the most emblematic band in the world.",
-      "category":"Music Concert",
-      "place":"Room A"
-      ,"capacity":138000,
-      "estimate":138000,
-      "price":150
-    },
-    {
-      "id": "8",
-      "image":"https://i.postimg.cc/KvsSK8cj/Electronic-Fest.jpg",
-      "name":"Electronic Fest",
-      "date":"2021-01-22",
-      "description":"The best national and international DJs gathered in one place.",
-      "category":"Music Concert",
-      "place":"Room A",
-      "capacity":138000,
-      "assistance":110300,
-      "price":250
-      },
-    {
-      "id": "9",
-      "image":"https://i.postimg.cc/fyLqZY9K/10-K-for-life.jpg",
-      "name":"10K for life",
-      "date":"2021-03-01",
-      "description":"Come and exercise, improve your health and lifestyle.",
-      "category":"Race",
-      "place":"Soccer field",
-      "capacity":30000,
-      "assistance":25698,
-      "price":3
-    },
-    {
-      "id": "10",
-      "image":"https://i.postimg.cc/zv67r65z/15kny.jpg",
-      "name":"15K NY",
-      "date":"2022-03-01",
-      "description":"We'll be raising funds for hospitals and medical care in this unique event held in The Big Apple.",
-      "category":"Race",
-      "place":"New York",
-      "capacity":3000000,
-      "assistance":2569800,
-      "price":3
-      },
-    {
-      "id": "11",
-      "image":"https://i.postimg.cc/Sst763n6/book1.jpg",
-      "name":"School's book fair",
-      "date":"2022-10-15",
-      "description":"Bring your unused school book and take the one you need.",
-      "category":"Book Exchange",
-      "place":"Room D1",
-      "capacity":150000,
-      "estimate":123286,
-      "price":1
-    },
-    {
-      "id": "12",
-      "image":"https://i.postimg.cc/05FhxHVK/book4.jpg",
-      "name":"Just for your kitchen",
-      "date":"2021-11-09",
-      "description":"If you're a gastronomy lover come get the cookbook that best suits your taste and your family's.",
-      "category":"Book Exchange",
-      "place":"Room D6",
-      "capacity":130000,
-      "assistance":90000,
-      "price":100
-    },
-    {
-      "id": "13",
-      "image":"https://i.postimg.cc/vH52y81C/cinema4.jpg",
-      "name":"Batman",
-      "date":"2021-03-11",
-      "description":"Come see Batman fight crime in Gotham City.",
-      "category":"Cinema",
-      "place":"Room D1",
-      "capacity":11000,
-      "assistance":9300,
-      "price":225
-    },
-    {
-      "id": "14",
-      "image":"https://i.postimg.cc/T3C92KTN/scale.jpg",
-      "name":"Avengers",
-      "date":"2022-10-15",
-      "description":"Marvel's Avengers Premier in 3d, the start of an epic saga with your favourite superheroes.",
-      "category":"Cinema",
-      "place":"Room D1",
-      "capacity":9000,
-      "estimate":9000,
-      "price":250
+let urlAPI = 'https://mindhub-xj03.onrender.com/api/amazing';
+let urlActual= document.URL;
+
+let events = [];
+let types = [];
+
+
+async function getEvents() {
+    try {
+      let response = await fetch(urlAPI);
+      let dataAPI = await response.json();
+      
+      for (const evento of dataAPI.events) {
+          saveEventsByDate(evento);
+      }
+
+
+      printTemplates('#cards', events)
+
+
+      types = extractTypes(events);
+
+
+      printChecks('#filters_container', types)
+
+        
+    } catch (error) {
+        console.log(error.message);
     }
-    
-];
+}
+getEvents();
 
-const eventsUpcoming = events.filter(event => new Date(event.date).getFullYear() > 2021)
 
-const eventsPast = events.filter(event => new Date(event.date).getFullYear() <= 2021)
+
+function saveEventsByDate(evento){ 
+    if(urlActual == "http://127.0.0.1:5501/html/index.html"){
+        events.push(evento);
+    }
+    else if(urlActual == "http://127.0.0.1:5501/html/upcoming-events.html"){
+        if(new Date(evento.date).getFullYear() > 2022){
+            events.push(evento);
+        }
+    }
+    else if(urlActual == "http://127.0.0.1:5501/html/past-events.html"){
+        if(new Date(evento.date).getFullYear() <= 2022){
+            events.push(evento);
+        }
+    }
+    else{
+        events.push(evento);
+    }
+}
+
+
+
+// creo las cards y las pinto en el container
+
+function defineTemplate(evento) {
+    return `
+    <div id="card" class="card text-center p-2 m-2 shadow" style="width: 18rem;">
+      <img src="${evento.image}" class="card-img-top" alt="imagen">
+      <div class="card-body">
+          <h5 class="card-title">${evento.name}</h5>
+          <p class="card-text">${evento.description}</p>
+          <div class="row">
+              <p class="col m-0 align-self-center">$ ${evento.price}</p>
+              <a href="./details.html?&id=${evento._id}" class="btn btn-primary col">Ver más...</a>
+          </div>       
+      </div>
+    </div>
+`
+}
+
+
+
+function printTemplates(id_contenedor, eventos) {
+    let container = document.querySelector(id_contenedor)  
+    eventos = eventos.map(defineTemplate)
+    container.innerHTML = eventos.join('')
+}
+
+
+
+
+// extraigo las categorias
+
+function extractTypes(eventos){
+    let types = [];
+    eventos.forEach(evento => {
+        if (!types.includes(evento.category)) {
+            types.push(evento.category);
+        }
+    });
+    return types;
+}
+
+
+
+// pinto los checkboxes
+
+function printChecks(id_contenedor, categorias) {
+    let container = document.querySelector(id_contenedor)
+    categorias = categorias.map(each=> {
+        return `
+        <fieldset class="col m-3">
+            <label class="contact-label" for="${each}">${each}</label>
+            <input onclick="captureData()" class="class_checks contact-input" type="checkbox" value="${each}" name="tipo" id="${each}">
+        </fieldset>
+        `
+    })
+    categorias.push(
+        `
+        <form class="d-flex  m-3" role="search">
+            <input onkeyup="captureData()" id="id_search" class="contact-input form-control me-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>  
+        `
+    )
+    container.innerHTML = categorias.join('')
+}
+
+
+
+// Filtros
+
+
+
+function captureData() {
+    let texto = document.getElementById('id_search').value;
+    let checks = Array.from(document.querySelectorAll('.class_checks:checked')).map(each => each.value);
+    let filtro = events.filter(each => {
+        return (each.name.toLowerCase().includes(texto.toLowerCase())) && (checks.length === 0 || checks.includes(each.category));
+    })
+    console.log(filtro);
+    if (filtro.length>0) {
+        printTemplates('#cards', filtro);
+    } else {
+        notFound('#cards');
+    }
+}
+
+
+function notFound(id_etiqueta) {
+    let container = document.querySelector(id_etiqueta)
+    container.innerHTML = `
+    <div class="card m-2 card-box">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h3 class="card-title d-flex flex-column align-items-center justify-center">EVENTO NO ENCONTRADO</h3>
+        </div>
+    </div>
+    `
+}

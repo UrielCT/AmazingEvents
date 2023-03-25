@@ -64,13 +64,20 @@ table{
     caption-side: top;
     border-collapse: collapse;
     margin-top: 20px;
+    width: 100%;
+}
+table, h3{
+    margin: 1rem;
 }
 
 td,th{
     border: 2px solid black;
     padding: 10px 20px 10px 20px;
+    text-align: center;
 }
 
 thead{
-    background-color: rgb(188, 188, 188);
+    background-color: rgb(247, 186, 106);
 }
+
+
