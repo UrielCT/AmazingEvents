@@ -55,12 +55,11 @@
                 <div id="filters_container" class="row p-3 align-items-center" >
 
                     <fieldset v-for="categoria of categorias" class="col m-3">
-                        <label class="contact-label" :for="categoria">{{categoria}}</label>
+                        <label class="contact-label me-2" :for="categoria">{{categoria}}</label>
                         <input v-model="categoriasSeleccionadas" class="class_checks contact-input" type="checkbox" :value="categoria" name="tipo" :id="categoria">
                     </fieldset>
                     
                     <form class="d-flex  m-3" role="search">
-                        <!-- <input v-on:input="filtrarPorTexto()" id="id_search" class="contact-input form-control me-2" type="text" placeholder="Search" aria-label="Search"> -->
                         <input v-model="texto" id="id_search" class="contact-input form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         {{filtroDoble}}
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -91,7 +90,7 @@
                             <p class="card-text">{{evento.description}}</p>
                             <div class="row">
                                 <p class="col m-0 align-self-center">$ {{evento.price}}</p>
-                                <a href="./details.html?&id=${evento._id}" class="btn btn-primary col">Ver más...</a>
+                                <a :href="'./details.html?&id=' + evento._id" class="btn btn-primary col">Ver más...</a>
                             </div>       
                         </div>
                     </div>
