@@ -1,4 +1,5 @@
-let urlAPI = 'https://mindhub-xj03.onrender.com/api/amazing';
+const urlAPI = 'https://mindhub-xj03.onrender.com/api/amazing'
+
 let urlActual= document.URL;
 
 let events = [];
@@ -32,6 +33,9 @@ getEvents();
 
 
 
+
+
+
 function saveEventsByDate(evento){ 
     if(urlActual == "http://127.0.0.1:5501/html/index.html"){
         events.push(evento);
@@ -50,6 +54,9 @@ function saveEventsByDate(evento){
         events.push(evento);
     }
 }
+
+
+
 
 
 
@@ -82,6 +89,9 @@ function printTemplates(id_contenedor, eventos) {
 
 
 
+
+
+
 // extraigo las categorias
 
 function extractTypes(eventos){
@@ -93,6 +103,9 @@ function extractTypes(eventos){
     });
     return types;
 }
+
+
+
 
 
 
@@ -121,9 +134,15 @@ function printChecks(id_contenedor, categorias) {
 
 
 
+
+
+
+
+
+
+
+
 // Filtros
-
-
 
 function captureData() {
     let texto = document.getElementById('id_search').value;
@@ -138,6 +157,8 @@ function captureData() {
         notFound('#cards');
     }
 }
+
+
 
 
 function notFound(id_etiqueta) {
