@@ -13,92 +13,140 @@
 </head>
 <body>
 
+    <div id="app">
 
-    <header >
-        <nav class="navbar navbar-expand-lg bg-dark ">
-            <div class="container-fluid">
-                <picture>
-                    <img class="logo" src="../src/logo-amazing-events.png" alt="logo">
-                </picture>
-                <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <a class="nav-link  nav-boton" aria-current="page" href="./index.html">Home</a>
-                        <a class="nav-link  nav-boton" href="./upcoming-events.html">Upcoming Events</a>
-                        <a class="nav-link  nav-boton" href="./past-events.html">Past Events</a>
-                        <a class="nav-link  nav-boton" href="./contact.html">Contact</a>
-                        <a class="nav-link text-danger nav-boton" href="#">Stats</a>
+        <header >
+            <nav class="navbar navbar-expand-lg bg-dark ">
+                <div class="container-fluid">
+                    <picture>
+                        <img class="logo" src="../src/logo-amazing-events.png" alt="logo">
+                    </picture>
+                    <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ms-auto">
+                            <a class="nav-link  nav-boton" aria-current="page" href="./index.html">Home</a>
+                            <a class="nav-link  nav-boton" href="./upcoming-events.html">Upcoming Events</a>
+                            <a class="nav-link  nav-boton" href="./past-events.html">Past Events</a>
+                            <a class="nav-link  nav-boton" href="./contact.html">Contact</a>
+                            <a class="nav-link text-danger nav-boton" href="#">Stats</a>
+                        </div>
                     </div>
                 </div>
+            </nav>
+    
+            <div class="title-bar">
+                <a  href="./contact.html">
+                    <p class="arrow">←</p>
+                </a>
+                <h1>Stats</h1>
+                <a href="#">
+                    <p class="arrow">→</p>
+                </a>
+                
             </div>
-        </nav>
-
-        <div class="title-bar">
-            <a  href="./contact.html">
-                <p class="arrow">←</p>
-            </a>
-            <h1>Stats</h1>
-            <a href="#">
-                <p class="arrow">→</p>
-            </a>
+        </header>
+        
+    
+        <main>
+            <div class="container">
+    
+                <h3>Events statistics</h3>
+                <table id="tabla_statistics">
+                    <thead>
+                        <tr>            
+                            <th scope="col">Events with the highest percentage of attendance</th>
+                            <th scope="col">Events with the lowest percentage of attendance</th>
+                            <th scope="col">Events with larger capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{highestPercentageEvent.evento}} ({{highestPercentageEvent.porcentaje}}%)</td>
+                            <td>{{lowestPercentageEvent.evento}} ({{lowestPercentageEvent.porcentaje}}%)</td>
+                            <td>{{largerCapacityEvent.evento}} ({{largerCapacityEvent.capacidad}})</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <h3>Upcoming events statistics by category</h3>
+                <table id="tabla_upcoming_events">
+                    <thead>
+                        <tr>            
+                            <th scope="col">Category</th>
+                            <th scope="col">Reveneus</th>
+                            <th scope="col">Percentage of attendance</th>
+                        </tr>
+                    </thead>
+                    <tr v-for="stat of upcomingStats">
+                        <td>{{stat.categoria}}</td>
+                        <td>${{stat.revenues}}</td>
+                        <td>{{stat.perAttendance}}%</td>
+                    </tr>
+                </table>
+    
+                <h3>Past events statistics by category</h3>
+                <table id="tabla_past_events">
+                    <thead>
+                        <tr>            
+                            <th scope="col">Category</th>
+                            <th scope="col">Reveneus</th>
+                            <th scope="col">Percentage of attendance</th>
+                        </tr>
+                    </thead>
+                    <tr v-for="stat of pastStats">
+                        <td>{{stat.categoria}}</td>
+                        <td>${{stat.revenues}}</td>
+                        <td>{{stat.perAttendance}}%</td>
+                    </tr>
+                </table>
             
-        </div>
-    </header>
-    
-
-    <main>
-        <div class="container">
-
-            <h3>Events statistics</h3>
-            <table id="tabla_statistics"></table>
-
-            <h3>Upcoming events statistics by category</h3>
-            <table id="tabla_upcoming_events"></table>
-
-            <h3>Past events statistics by category</h3>
-            <table id="tabla_past_events"></table>
-        
-        </div>
-        
-        
-    </main>
- 
-    
-
-
-
-    
-   
-
-    <footer class="container-fluid bg-dark">
-        <div class="row justify-content-between align-items-center p-2">
-            <div class="col">   
-
-                <a class="me-4" href="https://www.instagram.com/">
-                    <img src="../src/instagram.png" alt="Instagram">
-                </a>
-
-                <a class="me-4" href="https://es-la.facebook.com/">
-                    <img src="../src/facebook.png" alt="Facebook">
-                </a>
-    
-                <a href="https://www.whatsapp.com/?lang=es">
-                    <img src="../src/whatsapp.png" alt="WhatsApp">
-                </a>
             </div>
-
-            <div class="col text-end">
-                <h2 class="text-white">Cohort</h2>
+        </main>
+     
+        
+    
+    
+    
+        
+       
+    
+        <footer class="container-fluid bg-dark">
+            <div class="row justify-content-between align-items-center p-2">
+                <div class="col">   
+    
+                    <a class="me-4" href="https://www.instagram.com/">
+                        <img src="../src/instagram.png" alt="Instagram">
+                    </a>
+    
+                    <a class="me-4" href="https://es-la.facebook.com/">
+                        <img src="../src/facebook.png" alt="Facebook">
+                    </a>
+        
+                    <a href="https://www.whatsapp.com/?lang=es">
+                        <img src="../src/whatsapp.png" alt="WhatsApp">
+                    </a>
+                </div>
+    
+                <div class="col text-end">
+                    <h2 class="text-white">Cohort</h2>
+                </div>
+                
             </div>
-            
-        </div>
-    </footer>
+        </footer>
+
+    </div>
+
+
+    
     
 </body>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <script src="../JS/stats.js" ></script>
 
 </html>
