@@ -20,10 +20,10 @@ const app = createApp({
     },
     methods:{
         getEvents(){
-            if(this.urlActual == "http://127.0.0.1:5501/html/upcoming-events.html"){
+            if(this.urlActual == "https://amazing-events-uct.netlify.app/upcoming-events.html"){
                 this.getUpcomingEventsFromApi()
             }
-            else if(this.urlActual == "http://127.0.0.1:5501/html/past-events.html"){
+            else if(this.urlActual == "https://amazing-events-uct.netlify.app/past-events.html"){
                 this.getPastEventsFromApi()
             }
             else{
