@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="7.841" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Cards" name="User wants to select a card in order to better see the information" time="7.591">
+<system-out><![CDATA[
+Given user open browser.....................................................passed
+And enter into the website..................................................passed
+When user clicks the button -Ver Mas...-....................................passed
+Then information is available...............................................passed
+]]></system-out>
+</testcase>
+</testsuite>
